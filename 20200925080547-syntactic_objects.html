@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-25 Fri 10:38 -->
+<!-- 2020-09-25 Fri 14:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Syntactic Objects</title>
@@ -248,21 +248,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org76f48b3">1. Abstract Syntax Trees</a>
+<li><a href="#org75eed56">1. Abstract Syntax Trees</a>
 <ul>
-<li><a href="#orgb21cdaa">1.1. Theorem</a>
+<li><a href="#org8368773">1.1. Theorem</a>
 <ul>
-<li><a href="#org88ae022">1.1.1. Proof</a></li>
+<li><a href="#org2c6bffa">1.1.1. Proof</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#orgcff2494">2. Abstract Binding Trees</a></li>
+<li><a href="#org56e1de7">3. Exercises</a>
+<ul>
+<li><a href="#orgcac10e9">3.1. Exercise 1.1</a>
+<ul>
+<li><a href="#org029ddf3">3.1.1. Proof</a></li>
+</ul>
+</li>
+<li><a href="#org5498abd">3.2. Exercise 1.2</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org76f48b3" class="outline-2">
-<h2 id="org76f48b3"><span class="section-number-2">1</span> Abstract Syntax Trees</h2>
+<div id="outline-container-org75eed56" class="outline-2">
+<h2 id="org75eed56"><span class="section-number-2">1</span> Abstract Syntax Trees</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>An abstract syntax tree, or ast for short, is an ordered tree whose leaves are <i>variables</i> and whose interior nodes are <i>operators</i> whose <i>arguments</i> are its children.</li>
@@ -303,27 +314,76 @@
 </ol></li>
 </ul>
 </div>
-<div id="outline-container-orgb21cdaa" class="outline-3">
-<h3 id="orgb21cdaa"><span class="section-number-3">1.1</span> Theorem</h3>
+<div id="outline-container-org8368773" class="outline-3">
+<h3 id="org8368773"><span class="section-number-3">1.1</span> Theorem</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 If \(a \in \mathcal A[ \mathcal X, x]\), then for every \(b \in \mathcal A[\mathcal X]\) there exists a unique \(c \in \mathcal A[\mathcal X]\) such that \([b/x]a=c\).
 </p>
 </div>
-<div id="outline-container-org88ae022" class="outline-4">
-<h4 id="org88ae022"><span class="section-number-4">1.1.1</span> Proof</h4>
+<div id="outline-container-org2c6bffa" class="outline-4">
+<h4 id="org2c6bffa"><span class="section-number-4">1.1.1</span> Proof</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
-By structural induction on \(a\). If \(a = x\), then \(c = b\) by definition; otherwise, if \(a = y \neq x\), then \(c = y\) also by definition. Otherwise, \(a = o(a_1, \cdots, a_n)\), and we have by induction unique \(c_1, \cdots, c_n\) such that \([b/x]a_1 = c_1\) and \(\cdots [b/x]a_n = c_n\), and so \(c\) is \(c = o(a_1 ; \cdots ; a_n)\) by definition of substitution.
+By structural induction on \(a\). If \(a = x\), then \(c = b\) by definition; otherwise, if \(a = y \neq x\), then \(c = y\) also by definition. Otherwise, \(a = o(a_1, \cdots, a_n)\), and we have by induction unique \(c_1, \cdots, c_n\) such that \([b/x]a_1 = c_1\) and \(\cdots [b/x]a_n = c_n\), and so \(c\) is \(c = o(c_1 ; \cdots ; c_n)\) by definition of substitution.
 </p>
 </div>
 </div>
 </div>
 </div>
+
+
+<div id="outline-container-orgcff2494" class="outline-2">
+<h2 id="orgcff2494"><span class="section-number-2">2</span> Abstract Binding Trees</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><i>Abtract binding trees</i> or <i>abt&rsquo;s</i> enrich ast&rsquo;s with the means to introduce new variables and symbols, called a <i>binding</i>, with a specified range of significance, called its <i>scope</i>.</li>
+<li>Example
+\[\text{let } x \text{ be } a_1 \text{ in } a_2\]
+introduces a variable \(x\) for use within the expression \(a_2\) to stand for the expression \(a_1\).</li>
+<li>An argument to an operator is called an <i>abstractor</i> and has the form \(x_1, \cdots, x_k.a\). The sequence of variables \(x_1, \cdots, x_k\) are bound within the abt \(a\).</li>
+<li>To account for binding, operators are assigned <i>generalized arities</i> of the form \((\upsilon_1, \cdots, \upsilon_n)s\), which specifies operators of sort \(s\) with \(n\) arguments of <i>valence</i> \(\upsilon_1, \cdots, \upsilon_n\).
+<ul class="org-ul">
+<li>In general, a valence \(\upsilon\) has the form \(s_1, \cdots, s_k.s\) which specifies the sort of the argument as well as the number of and sorts of the variables bound within it.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org56e1de7" class="outline-2">
+<h2 id="org56e1de7"><span class="section-number-2">3</span> Exercises</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgcac10e9" class="outline-3">
+<h3 id="orgcac10e9"><span class="section-number-3">3.1</span> Exercise 1.1</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Prove by structural induction on abstract syntax trees that if \(\mathcal X \subseteq \mathcal Y\), then \(\mathcal A[\mathcal X] \subseteq \mathcal A[\mathcal Y]\).
+</p>
+</div>
+<div id="outline-container-org029ddf3" class="outline-4">
+<h4 id="org029ddf3"><span class="section-number-4">3.1.1</span> Proof</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+Let \(a \in \mathcal A[ \mathcal X]\).
+\(a\) is either a variable or an operator.
+Suppose \(a\) is a variable.
+Then if \(a \in \mathcal X_s\), for some sort \(s \in \mathcal S\), then \(a \in Y_s\) by hypothesis, and hence \(a \in \mathcal A[\mathcal Y]_s\).
+</p>
+
+<p>
+Next, suppose \(a\) is an operator \(o\), and let \(\text{ar}(o) = (s_1, \cdots, s_n)s\). If \(a_1 \in \mathcal A[\mathcal X]_{s_1}, \cdots, \mathcal A[\mathcal X]_{s_n}\), then by induction \(a_1 \in \mathcal A[\mathcal Y]_{s_1}, \cdots, \mathcal A[\mathcal Y]_{s_n}\), and hence by definition \(o(a_1; \cdots ; a_n) \in \mathcal A [\mathcal Y]\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5498abd" class="outline-3">
+<h3 id="org5498abd"><span class="section-number-3">3.2</span> Exercise 1.2</h3>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zarak Mahmud</p>
-<p class="date">Created: 2020-09-25 Fri 10:38</p>
+<p class="date">Created: 2020-09-25 Fri 14:17</p>
 </div>
 </body>
 </html>
