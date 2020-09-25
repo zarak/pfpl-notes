@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-25 Fri 14:36 -->
+<!-- 2020-09-25 Fri 14:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Syntactic Objects</title>
@@ -248,32 +248,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgba4bba2">1. Abstract Syntax Trees</a>
+<li><a href="#orgff44b12">1. Abstract Syntax Trees</a>
 <ul>
-<li><a href="#orga9cab9a">1.1. Theorem</a>
+<li><a href="#orgd207fb9">1.1. Theorem</a>
 <ul>
-<li><a href="#org43940cf">1.1.1. Proof</a></li>
+<li><a href="#org15ccc6b">1.1.1. Proof</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1b7b6bd">2. Abstract Binding Trees</a></li>
-<li><a href="#org5389c51">3. Exercises</a>
-<ul>
-<li><a href="#orgdf6d543">3.1. Exercise 1.1</a>
-<ul>
-<li><a href="#orgacf5d4d">3.1.1. Proof</a></li>
-</ul>
-</li>
-<li><a href="#org5d76fdc">3.2. Exercise 1.2</a></li>
-</ul>
-</li>
+<li><a href="#orgc249f81">2. Abstract Binding Trees</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgba4bba2" class="outline-2">
-<h2 id="orgba4bba2"><span class="section-number-2">1</span> Abstract Syntax Trees</h2>
+<div id="outline-container-orgff44b12" class="outline-2">
+<h2 id="orgff44b12"><span class="section-number-2">1</span> Abstract Syntax Trees</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>An abstract syntax tree, or ast for short, is an ordered tree whose leaves are <i>variables</i> and whose interior nodes are <i>operators</i> whose <i>arguments</i> are its children.</li>
@@ -314,15 +304,15 @@
 </ol></li>
 </ul>
 </div>
-<div id="outline-container-orga9cab9a" class="outline-3">
-<h3 id="orga9cab9a"><span class="section-number-3">1.1</span> Theorem</h3>
+<div id="outline-container-orgd207fb9" class="outline-3">
+<h3 id="orgd207fb9"><span class="section-number-3">1.1</span> Theorem</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 If \(a \in \mathcal A[ \mathcal X, x]\), then for every \(b \in \mathcal A[\mathcal X]\) there exists a unique \(c \in \mathcal A[\mathcal X]\) such that \([b/x]a=c\).
 </p>
 </div>
-<div id="outline-container-org43940cf" class="outline-4">
-<h4 id="org43940cf"><span class="section-number-4">1.1.1</span> Proof</h4>
+<div id="outline-container-org15ccc6b" class="outline-4">
+<h4 id="org15ccc6b"><span class="section-number-4">1.1.1</span> Proof</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 By structural induction on \(a\). If \(a = x\), then \(c = b\) by definition; otherwise, if \(a = y \neq x\), then \(c = y\) also by definition. Otherwise, \(a = o(a_1, \cdots, a_n)\), and we have by induction unique \(c_1, \cdots, c_n\) such that \([b/x]a_1 = c_1\) and \(\cdots [b/x]a_n = c_n\), and so \(c\) is \(c = o(c_1 ; \cdots ; c_n)\) by definition of substitution.
@@ -333,8 +323,8 @@ By structural induction on \(a\). If \(a = x\), then \(c = b\) by definition; ot
 </div>
 
 
-<div id="outline-container-org1b7b6bd" class="outline-2">
-<h2 id="org1b7b6bd"><span class="section-number-2">2</span> Abstract Binding Trees</h2>
+<div id="outline-container-orgc249f81" class="outline-2">
+<h2 id="orgc249f81"><span class="section-number-2">2</span> Abstract Binding Trees</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><i>Abtract binding trees</i> or <i>abt&rsquo;s</i> enrich ast&rsquo;s with the means to introduce new variables and symbols, called a <i>binding</i>, with a specified range of significance, called its <i>scope</i>.</li>
@@ -349,41 +339,10 @@ introduces a variable \(x\) for use within the expression \(a_2\) to stand for t
 </ul>
 </div>
 </div>
-<div id="outline-container-org5389c51" class="outline-2">
-<h2 id="org5389c51"><span class="section-number-2">3</span> Exercises</h2>
-<div class="outline-text-2" id="text-3">
-</div>
-<div id="outline-container-orgdf6d543" class="outline-3">
-<h3 id="orgdf6d543"><span class="section-number-3">3.1</span> Exercise 1.1</h3>
-<div class="outline-text-3" id="text-3-1">
-<p>
-Prove by structural induction on abstract syntax trees that if \(\mathcal X \subseteq \mathcal Y\), then \(\mathcal A[\mathcal X] \subseteq \mathcal A[\mathcal Y]\).
-</p>
-</div>
-<div id="outline-container-orgacf5d4d" class="outline-4">
-<h4 id="orgacf5d4d"><span class="section-number-4">3.1.1</span> Proof</h4>
-<div class="outline-text-4" id="text-3-1-1">
-<p>
-Let \(a \in \mathcal A[ \mathcal X]\).
-\(a\) is either a variable or an operator.
-Suppose \(a\) is a variable.
-Then if \(a \in \mathcal X_s\), for some sort \(s \in \mathcal S\), then \(a \in Y_s\) by hypothesis, and hence \(a \in \mathcal A[\mathcal Y]_s\).
-</p>
-
-<p>
-Next, suppose \(a\) is an operator \(o\), and let \(\text{ar}(o) = (s_1, \cdots, s_n)s\). If \(a_1 \in \mathcal A[\mathcal X]_{s_1}, \cdots, a_n \in \mathcal A[\mathcal X]_{s_n}\), then by induction \(a_1 \in \mathcal A[\mathcal Y]_{s_1}, \cdots, a_n \in \mathcal A[\mathcal Y]_{s_n}\), and hence by definition \(o(a_1; \cdots ; a_n) \in \mathcal A [\mathcal Y]\).
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org5d76fdc" class="outline-3">
-<h3 id="org5d76fdc"><span class="section-number-3">3.2</span> Exercise 1.2</h3>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zarak Mahmud</p>
-<p class="date">Created: 2020-09-25 Fri 14:36</p>
+<p class="date">Created: 2020-09-25 Fri 14:47</p>
 </div>
 </body>
 </html>
