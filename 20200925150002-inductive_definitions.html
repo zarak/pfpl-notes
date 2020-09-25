@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-25 Fri 15:34 -->
+<!-- 2020-09-25 Fri 17:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inductive Definitions</title>
@@ -248,14 +248,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org68894bc">1. Judgments</a></li>
-<li><a href="#org1883082">2. Inference Rules</a></li>
+<li><a href="#orgad2d59d">1. Judgments</a></li>
+<li><a href="#org751527d">2. Inference Rules</a></li>
+<li><a href="#org8ede460">3. Derivations</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org68894bc" class="outline-2">
-<h2 id="org68894bc"><span class="section-number-2">1</span> Judgments</h2>
+<div id="outline-container-orgad2d59d" class="outline-2">
+<h2 id="orgad2d59d"><span class="section-number-2">1</span> Judgments</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
@@ -299,8 +300,8 @@ Examples
 </ul>
 </div>
 </div>
-<div id="outline-container-org1883082" class="outline-2">
-<h2 id="org1883082"><span class="section-number-2">2</span> Inference Rules</h2>
+<div id="outline-container-org751527d" class="outline-2">
+<h2 id="org751527d"><span class="section-number-2">2</span> Inference Rules</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><p>
@@ -321,21 +322,70 @@ in which \(J\) and \(J_1, \cdots, J_k\) are all judgments of the form being defi
 <li>When \(k\) is \(0\), a rule states that its conclusion holds unconditionally.</li>
 <li><b>Bear in mind that there may be, in general, many rules with the same conclusion, each specifying sufficient conditions for the conclusion. Consequently, if the conclusion of a rule holds, then it is not necessary that the premises hold, for it might have been derived by another rule.</b></li>
 <li><p>
-Example
+<b>Example 1</b>
 </p>
 
 \begin{align*}
-  \frac{1}{\text{ zero nat }} \\
+  \frac{~}{\text{ zero nat }} \\
   \\
   \frac{a \text{ nat}}{\text{ zero nat }}
+\end{align*}
+
+<p>
+Thus \(a\) <code>nat</code> holds whenever \(a\) is <code>zero</code> or \(a\) is \(\text{succ}(b)\) where \(b\) <code>nat</code> for some \(b\).
+</p></li>
+<li><p>
+<b>Example 2</b>
+The judgment form \(a\) is \(b\) expresses the equality of two abt&rsquo;s \(a\) and \(b\) such that \(a\) nat and \(b\) nat is inductively defined by the following rules:
+</p>
+
+\begin{align*}
+  \frac{~}{\text{ zero is zero }} \\
+  \\
+  \frac{a \text{ is } b}{\text{succ a is succ b}}
 \end{align*}</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8ede460" class="outline-2">
+<h2 id="org8ede460"><span class="section-number-2">3</span> Derivations</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>To show that an inductively defined judgment holds, it is enough to exhibit a <i>derivation</i> of it.</li>
+<li><p>
+If
+</p>
+\begin{equation}
+  \frac{J_1 ~ \cdots ~ J_k}{J}
+\end{equation}
+<p>
+is an inference rule and \(\nabla_1, \cdots, \nabla_k\) are derivations of its permises, then
+</p>
+
+\begin{equation}
+  \frac{\nabla_1 ~ \cdots ~ \nabla_k}{J}
+\end{equation}
+
+<p>
+is a derivation of its conclusion.
+</p></li>
+<li><p>
+<b>Example</b> Here is a derivation of <code>node(node(empty; empty); empty) tree</code>:
+</p>
+
+\begin{equation}
+  \overline{\text{empty tree}} ~~ \overline{\text{empty tree}} \\
+  \overline{\text {node(empty;empty) tree}} ~~ \overline{\text{empty tree}} \\
+  \overline{\text {node(node(empty;empty);empty) tree}}
+\end{equation}</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zarak Mahmud</p>
-<p class="date">Created: 2020-09-25 Fri 15:34</p>
+<p class="date">Created: 2020-09-25 Fri 17:40</p>
 </div>
 </body>
 </html>
