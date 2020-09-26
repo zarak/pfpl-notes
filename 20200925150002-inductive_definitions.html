@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-25 Fri 17:40 -->
+<!-- 2020-09-26 Sat 21:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inductive Definitions</title>
@@ -248,15 +248,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgad2d59d">1. Judgments</a></li>
-<li><a href="#org751527d">2. Inference Rules</a></li>
-<li><a href="#org8ede460">3. Derivations</a></li>
+<li><a href="#orgbd8e706">1. Judgments</a></li>
+<li><a href="#orgb66a7e6">2. Inference Rules</a></li>
+<li><a href="#orgfe7e69a">3. Derivations</a></li>
+<li><a href="#org73358c6">4. Rule Induction</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgad2d59d" class="outline-2">
-<h2 id="orgad2d59d"><span class="section-number-2">1</span> Judgments</h2>
+<div id="outline-container-orgbd8e706" class="outline-2">
+<h2 id="orgbd8e706"><span class="section-number-2">1</span> Judgments</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
@@ -300,8 +301,8 @@ Examples
 </ul>
 </div>
 </div>
-<div id="outline-container-org751527d" class="outline-2">
-<h2 id="org751527d"><span class="section-number-2">2</span> Inference Rules</h2>
+<div id="outline-container-orgb66a7e6" class="outline-2">
+<h2 id="orgb66a7e6"><span class="section-number-2">2</span> Inference Rules</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><p>
@@ -348,8 +349,8 @@ The judgment form \(a\) is \(b\) expresses the equality of two abt&rsquo;s \(a\)
 </div>
 </div>
 
-<div id="outline-container-org8ede460" class="outline-2">
-<h2 id="org8ede460"><span class="section-number-2">3</span> Derivations</h2>
+<div id="outline-container-orgfe7e69a" class="outline-2">
+<h2 id="orgfe7e69a"><span class="section-number-2">3</span> Derivations</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>To show that an inductively defined judgment holds, it is enough to exhibit a <i>derivation</i> of it.</li>
@@ -379,13 +380,38 @@ is a derivation of its conclusion.
   \overline{\text {node(empty;empty) tree}} ~~ \overline{\text{empty tree}} \\
   \overline{\text {node(node(empty;empty);empty) tree}}
 \end{equation}</li>
+<li>There are two main methods for finding derivations
+<ul class="org-ul">
+<li><i>forward chaining</i> or <i>bottom-up construciton</i></li>
+<li><i>backward chaining</i> or <i>top-down construction</i></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org73358c6" class="outline-2">
+<h2 id="org73358c6"><span class="section-number-2">4</span> Rule Induction</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><p>
+The property \(\mathcal P\) respects the rule
+</p>
+
+<p>
+\[
+    \frac{a_1 ~ \mathsf J ~~ \cdots ~~ a_k ~ \mathsf J}{a ~ \mathsf J}
+  \]
+</p>
+
+<p>
+if \(\mathcal P(a)\) holds whenever \(P(a_1), \cdots, P(a_k)\) do. The assumptions \(\mathcal P(a_1), \cdots, \mathcal P(a_k)\) are called the <i>inductive hypotheses</i>, and \(\mathcal P(a)\) is called the <i>inductive conclusion</i> of the inference.
+</p></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zarak Mahmud</p>
-<p class="date">Created: 2020-09-25 Fri 17:40</p>
+<p class="date">Created: 2020-09-26 Sat 21:04</p>
 </div>
 </body>
 </html>
